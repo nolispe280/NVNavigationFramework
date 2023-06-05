@@ -4,3 +4,8 @@ framework module NVNavigationKit {
   export *
   module * { export * }
 }
+
+module NVNavigationKit.Swift {
+  header "NVNavigationKit-Swift.h"
+  requires objc
+}
