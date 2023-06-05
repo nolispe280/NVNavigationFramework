@@ -1,11 +1,6 @@
-framework module NVNavigationKit {
-  umbrella header "NVNavigationKit.h"
+framework module TestKit {
+  umbrella header "TestKit.h"
 
   export *
   module * { export * }
-}
-
-module NVNavigationKit.Swift {
-  header "NVNavigationKit-Swift.h"
-  requires objc
 }
