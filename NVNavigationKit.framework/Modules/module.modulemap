@@ -1,5 +1,5 @@
-framework module TestKit {
-  umbrella header "TestKit.h"
+framework module NVNavigationKit {
+  umbrella header "NVNavigationKit.h"
 
   export *
   module * { export * }
