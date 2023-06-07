@@ -284,7 +284,7 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #if defined(__OBJC__)
 
-typedef SWIFT_ENUM(NSInteger, ImageType, closed) {
+typedef SWIFT_ENUM(NSInteger, ImageType, open) {
   ImageTypeLEFT = 0,
   ImageTypeRIGHT = 1,
   ImageTypeSTRAIGHT = 2,
