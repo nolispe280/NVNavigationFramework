@@ -313,16 +313,16 @@ SWIFT_PROTOCOL("_TtP15NVNavigationKit20NVNavigationDelegate_")
 - (void)onNavigationRouteRecuperationFailed;
 - (void)location:(CLLocation * _Nonnull)location;
 - (void)onCurrentLocationRecuperationFailed;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
+- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
 - (void)rawLocation:(CLLocation * _Nonnull)rawLocation location:(CLLocation * _Nonnull)location routeProgress:(NVibeRouteProgress * _Nonnull)routeProgress;
 - (void)instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
-- (void)route:(NVibeRoute * _Nonnull)route direction:(CLLocationDirection)direction remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
+- (void)route:(NVibeRoute * _Nonnull)route direction:(CLLocationDirection)direction remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
+- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
 - (void)vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)instruction:(NSString * _Nonnull)instruction remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)instruction:(NSString * _Nonnull)instruction vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
+- (void)instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
+- (void)instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
 - (void)streetName:(NSString * _Nonnull)streetName instruction:(NSString * _Nonnull)instruction vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
-- (void)nextInstruction:(NSString * _Nonnull)nextInstruction remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
+- (void)nextInstruction:(NSString * _Nonnull)nextInstruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
 - (void)isNavigationPaused:(BOOL)isNavigationPaused;
 - (void)onErrorInvalidToken;
 @end
