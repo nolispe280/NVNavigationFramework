@@ -91,7 +91,8 @@ open class NVNavigationService {
   weak public var delegate: (any NVNavigationKit.NVNavigationDelegate)?
   public var pauseNavigationWhenBadAccuracy: Swift.Bool
   public var maximumAccuracyAllowed: Swift.Double
-  public var version: Swift.String
+  public var distanceBeforePrepareChangeStep: Swift.Double
+  public var distanceBetweenRightDirection: Swift.Double
   public init(delegate: (any NVNavigationKit.NVNavigationDelegate)? = nil)
   public func getStartingDirection(from startLocation: NVNavigationKit.NVibeLocation, to endLocation: NVNavigationKit.NVibeLocation)
   public func startCompass(direction: CoreLocation.CLLocationDirection? = nil)
