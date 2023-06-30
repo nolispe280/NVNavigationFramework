@@ -8393,58 +8393,93 @@
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "StringLiteral",
-      "offset": 737,
-      "length": 69,
+      "offset": 644,
+      "length": 9,
+      "value": "\"USER_ID\""
+    },
+    {
+      "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
+      "kind": "StringLiteral",
+      "offset": 761,
+      "length": 71,
       "value": "\"http:\/\/sdk-api.n-vibe.com?token=\""
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "StringLiteral",
-      "offset": 802,
-      "length": 2,
+      "offset": 826,
+      "length": 4,
+      "value": "\"na\""
+    },
+    {
+      "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
+      "kind": "StringLiteral",
+      "offset": 831,
+      "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "StringLiteral",
-      "offset": 805,
-      "length": 9,
+      "offset": 888,
+      "length": 11,
+      "value": "\"&id=\""
+    },
+    {
+      "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
+      "kind": "StringLiteral",
+      "offset": 898,
+      "length": 1,
       "value": "\"\""
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 860,
+      "offset": 1054,
       "length": 5,
       "value": "false"
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "StringLiteral",
-      "offset": 1147,
-      "length": 9,
-      "value": "\"message\""
+      "offset": 1338,
+      "length": 6,
+      "value": "\"code\""
+    },
+    {
+      "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 1359,
+      "length": 3,
+      "value": "200"
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "StringLiteral",
-      "offset": 1205,
-      "length": 20,
-      "value": "\"the token is valid\""
+      "offset": 1456,
+      "length": 9,
+      "value": "\"user_id\""
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1289,
+      "offset": 1654,
       "length": 4,
       "value": "true"
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
       "kind": "BooleanLiteral",
-      "offset": 1455,
+      "offset": 1840,
       "length": 5,
       "value": "false"
+    },
+    {
+      "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Manager\/TokenManager.swift",
+      "kind": "IntegerLiteral",
+      "offset": 2112,
+      "length": 1,
+      "value": "0"
     },
     {
       "filePath": "\/Users\/macpron-vibe\/Desktop\/Application\/NVNavigationKit\/NVNavigationKit\/NVNavigationKit\/Model\/NVibeAnnotation.swift",
