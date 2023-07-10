@@ -294,12 +294,13 @@ typedef SWIFT_ENUM(NSInteger, ImageType, open) {
   ImageTypeNONE = 6,
 };
 
-@class NVibeLocation;
-@class NVibeRoute;
+@class NVibeStep;
 @class CLLocation;
-@class NSString;
 @class NVibeRouteProgress;
+@class NSString;
+@class NVibeRoute;
 @class NVibeVibration;
+enum TokenError : NSInteger;
 
 SWIFT_PROTOCOL("_TtP15NVNavigationKit20NVNavigationDelegate_")
 @protocol NVNavigationDelegate
@@ -307,24 +308,17 @@ SWIFT_PROTOCOL("_TtP15NVNavigationKit20NVNavigationDelegate_")
 - (void)direction:(CLLocationDirection)direction;
 - (void)onCompassTriggered;
 - (void)onCompassNotAvailable;
-- (void)startingDirection:(CLLocationDirection)startingDirection;
-- (void)onStartingDirectionRecuperationFailed;
-- (void)departure:(NVibeLocation * _Nonnull)departure arrival:(NVibeLocation * _Nonnull)arrival route:(NVibeRoute * _Nonnull)route startingDirection:(CLLocationDirection)startingDirection solutionFound:(BOOL)solutionFound;
-- (void)onNavigationRouteRecuperationFailed;
-- (void)location:(CLLocation * _Nonnull)location;
-- (void)onCurrentLocationRecuperationFailed;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
+- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
 - (void)rawLocation:(CLLocation * _Nonnull)rawLocation location:(CLLocation * _Nonnull)location routeProgress:(NVibeRouteProgress * _Nonnull)routeProgress;
 - (void)instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
-- (void)route:(NVibeRoute * _Nonnull)route direction:(CLLocationDirection)direction remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection image:(enum ImageType)image;
+- (void)route:(NVibeRoute * _Nonnull)route direction:(CLLocationDirection)direction remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
+- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
 - (void)vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)instruction:(NSString * _Nonnull)instruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
-- (void)streetName:(NSString * _Nonnull)streetName instruction:(NSString * _Nonnull)instruction vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
-- (void)nextInstruction:(NSString * _Nonnull)nextInstruction instructionTurnHourDirection:(NSInteger)instructionTurnHourDirection remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
+- (void)step:(NVibeStep * _Nonnull)step remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
+- (void)step:(NVibeStep * _Nonnull)step vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
+- (void)nextStep:(NVibeStep * _Nonnull)nextStep remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
 - (void)isNavigationPaused:(BOOL)isNavigationPaused;
-- (void)onErrorInvalidToken;
+- (void)error:(enum TokenError)error;
 @end
 
 
@@ -389,6 +383,12 @@ SWIFT_CLASS("_TtC15NVNavigationKit14NVibeVibration")
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
+
+typedef SWIFT_ENUM(NSInteger, TokenError, open) {
+  TokenErrorINVALID_TOKEN = 0,
+  TokenErrorMAX_ACTIVE_USER_REACHED = 1,
+  TokenErrorUNKNOW = 2,
+};
 
 #endif
 #if defined(__cplusplus)
