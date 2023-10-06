@@ -283,7 +283,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #endif
 
 #if defined(__OBJC__)
-
 typedef SWIFT_ENUM(NSInteger, ImageType, open) {
   ImageTypeLEFT = 0,
   ImageTypeRIGHT = 1,
@@ -294,31 +293,64 @@ typedef SWIFT_ENUM(NSInteger, ImageType, open) {
   ImageTypeNONE = 6,
 };
 
+
+SWIFT_CLASS_NAMED("NVCompassService")
+@interface NVCompassService : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+
+SWIFT_PROTOCOL("_TtP15NVNavigationKit24NVCompassServiceDelegate_")
+@protocol NVCompassServiceDelegate
+@optional
+- (void)compassService:(NVCompassService * _Nonnull)service didCompassUpdateWithDirection:(CLLocationDirection)direction didCompassTrigger:(BOOL)didCompassTrigger;
+@end
+
+
+SWIFT_CLASS("_TtC15NVNavigationKit21NVNavigationDirection")
+@interface NVNavigationDirection : NSObject
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+SWIFT_CLASS_NAMED("NVNavigationService")
+@interface NVNavigationService : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 @class NVibeStep;
-@class CLLocation;
 @class NVibeRouteProgress;
+@class CLLocation;
 @class NSString;
 @class NVibeRoute;
 @class NVibeVibration;
 enum TokenError : NSInteger;
+@class NVibeMultimodalRoute;
+@class NVibeMultimodalStep;
+@class NVibeLocation;
 
-SWIFT_PROTOCOL("_TtP15NVNavigationKit20NVNavigationDelegate_")
-@protocol NVNavigationDelegate
+SWIFT_PROTOCOL("_TtP15NVNavigationKit27NVNavigationServiceDelegate_")
+@protocol NVNavigationServiceDelegate
 @optional
-- (void)direction:(CLLocationDirection)direction;
-- (void)onCompassTriggered;
-- (void)onCompassNotAvailable;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
-- (void)rawLocation:(CLLocation * _Nonnull)rawLocation location:(CLLocation * _Nonnull)location routeProgress:(NVibeRouteProgress * _Nonnull)routeProgress;
-- (void)instruction:(NSString * _Nonnull)instruction image:(enum ImageType)image;
-- (void)route:(NVibeRoute * _Nonnull)route direction:(CLLocationDirection)direction remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance remainingRouteDuration:(double)remainingRouteDuration step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
-- (void)remainingRouteDistance:(CLLocationDistance)remainingRouteDistance remainingStepDistance:(CLLocationDistance)remainingStepDistance step:(NVibeStep * _Nonnull)step image:(enum ImageType)image;
-- (void)vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)step:(NVibeStep * _Nonnull)step remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)step:(NVibeStep * _Nonnull)step vibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
-- (void)nextStep:(NVibeStep * _Nonnull)nextStep remainingStepDistance:(CLLocationDistance)remainingStepDistance vibration:(NVibeVibration * _Nonnull)vibration;
-- (void)isNavigationPaused:(BOOL)isNavigationPaused;
-- (void)error:(enum TokenError)error;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didStartWithStep:(NVibeStep * _Nonnull)step atRemainingRouteDistance:(CLLocationDistance)routeDistance atRemainingStepDistance:(CLLocationDistance)stepDistance withRemainingRouteDuration:(double)routeDuration withImage:(enum ImageType)image;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didUpdateProgress:(NVibeRouteProgress * _Nonnull)progress withRawLocation:(CLLocation * _Nonnull)rawLocation snappedToLocation:(CLLocation * _Nonnull)location;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didStopWithInstruction:(NSString * _Nonnull)instruction withImage:(enum ImageType)image;
+- (BOOL)navigationService:(NVNavigationService * _Nonnull)service shouldRerouteFromLocation:(CLLocation * _Nonnull)location SWIFT_WARN_UNUSED_RESULT;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didRerouteAlongRoute:(NVibeRoute * _Nonnull)route toDirection:(CLLocationDirection)direction withStep:(NVibeStep * _Nonnull)step atRemainingRouteDistance:(CLLocationDistance)routeDistance atRemainingStepDistance:(CLLocationDistance)stepDistance withRemainingRouteDuration:(double)routeDuration withImage:(enum ImageType)image;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didUpdateUIWithStep:(NVibeStep * _Nonnull)step atRemainingRouteDistance:(CLLocationDistance)routeDistance atRemainingStepDistance:(CLLocationDistance)stepDistance withImage:(enum ImageType)image;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didUpdateRightDirectionWithVibration:(NVibeVibration * _Nonnull)vibration;
+- (void)navigationService:(NVNavigationService * _Nonnull)service willChangeStep:(NVibeStep * _Nonnull)step withVibration:(NVibeVibration * _Nonnull)vibration atRemainingStepDistance:(CLLocationDistance)stepDistance;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didChangeStep:(NVibeStep * _Nonnull)step withVibration:(NSArray<NVibeVibration *> * _Nonnull)vibration;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didForceChangeSideForStep:(NVibeStep * _Nonnull)step atRemainingStepDistance:(CLLocationDistance)stepDistance withVibration:(NVibeVibration * _Nonnull)vibration;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didPauseNavigationOnBadAccuracy:(BOOL)didPauseNavigationOnBadAccuracy;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didFailToPassTokenWithError:(enum TokenError)error;
+- (BOOL)navigationService:(NVNavigationService * _Nonnull)service fromRoute:(NVibeMultimodalRoute * _Nonnull)route shouldGoToNextMultimodalStep:(NVibeMultimodalStep * _Nonnull)multimodalStep withRemainingMultimodalStep:(NSInteger)remainingMultimodalStep SWIFT_WARN_UNUSED_RESULT;
+- (void)navigationService:(NVNavigationService * _Nonnull)service fromRoute:(NVibeMultimodalRoute * _Nonnull)route didChangeMultimodalStep:(NVibeMultimodalStep * _Nonnull)multimodalStep withRemainingMultimodalStep:(NSInteger)remainingMultimodalStep;
+- (void)navigationService:(NVNavigationService * _Nonnull)service didUpdateTransitToStop:(NVibeLocation * _Nonnull)stop withRemainingStop:(NSInteger)remainingStop;
 @end
 
 
@@ -345,6 +377,20 @@ SWIFT_CLASS("_TtC15NVNavigationKit13NVibeLocation")
 
 SWIFT_CLASS("_TtC15NVNavigationKit13NVibeManeuver")
 @interface NVibeManeuver : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC15NVNavigationKit20NVibeMultimodalRoute")
+@interface NVibeMultimodalRoute : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC15NVNavigationKit19NVibeMultimodalStep")
+@interface NVibeMultimodalStep : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
@@ -378,8 +424,22 @@ SWIFT_CLASS("_TtC15NVNavigationKit17NVibeStepProgress")
 @end
 
 
+SWIFT_CLASS("_TtC15NVNavigationKit23NVibeTransitInformation")
+@interface NVibeTransitInformation : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
 SWIFT_CLASS("_TtC15NVNavigationKit14NVibeVibration")
 @interface NVibeVibration : NSObject
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
++ (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
+@end
+
+
+SWIFT_CLASS("_TtC15NVNavigationKit23NVibeWalkingInformation")
+@interface NVibeWalkingInformation : NSObject
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
 + (nonnull instancetype)new SWIFT_UNAVAILABLE_MSG("-init is unavailable");
 @end
