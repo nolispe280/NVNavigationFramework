@@ -6,6 +6,7 @@ import CoreLocation
 import Foundation
 import MapboxCoreNavigation
 import MapboxDirections
+import MapboxNavigation
 @_exported import NVNavigationKit
 import Polyline
 import Swift
