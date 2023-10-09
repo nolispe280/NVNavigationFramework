@@ -51,12 +51,11 @@ import _StringProcessing
 }
 @objc @_inheritsConvenienceInitializers open class NVNavigationDirection : ObjectiveC.NSObject {
   public static let shared: NVNavigationKit.NVNavigationDirection
-  @objc override dynamic public init()
   public func getMultimodalRoute(from startLocation: NVNavigationKit.NVibeLocation, to endLocation: NVNavigationKit.NVibeLocation, includeFullWalking: Swift.Bool = true, completion: @escaping ([NVNavigationKit.NVibeMultimodalRoute]?, NVNavigationKit.RouteError?) -> Swift.Void)
   public func getNextDeparture(from information: NVNavigationKit.NVibeTransitInformation, count: Swift.Int = 1, completion: @escaping ([Swift.String]) -> Swift.Void)
   public func getStartingDirection(from startLocation: NVNavigationKit.NVibeLocation, to endLocation: NVNavigationKit.NVibeLocation, completion: @escaping (CoreLocation.CLLocationDirection?, NVNavigationKit.RouteError?) -> Swift.Void)
   public func getNavigationRoute(from startLocation: NVNavigationKit.NVibeLocation, to endLocation: NVNavigationKit.NVibeLocation, sideStreet: NVNavigationKit.SideStreet? = nil, completion: @escaping ((departure: NVNavigationKit.NVibeLocation, arrival: NVNavigationKit.NVibeLocation, route: NVNavigationKit.NVibeRoute, startingDirection: CoreLocation.CLLocationDirection, solutionFound: Swift.Bool)?, NVNavigationKit.RouteError?) -> Swift.Void)
-  public func getCurrentLocation(completion: @escaping (CoreLocation.CLLocation?, NVNavigationKit.LocationError?) -> Swift.Void)
+  @objc override dynamic public init()
   @objc deinit
 }
 @objc @_hasMissingDesignatedInitializers open class NVibeLocation : ObjectiveC.NSObject {
@@ -200,6 +199,7 @@ public enum SideStreet : Swift.String {
     set
   }
   public init(delegate: (any NVNavigationKit.NVNavigationServiceDelegate)? = nil)
+  @objc deinit
   public func startMultimodalNavigation(departure: NVNavigationKit.NVibeLocation, arrival: NVNavigationKit.NVibeLocation, route: NVNavigationKit.NVibeMultimodalRoute)
   public func skipMultimodalStepNavigation()
   public func stopMultimodalNavigation()
@@ -207,7 +207,7 @@ public enum SideStreet : Swift.String {
   public func stopTransitNavigation()
   public func startNavigation(departure: NVNavigationKit.NVibeLocation, arrival: NVNavigationKit.NVibeLocation, route: NVNavigationKit.NVibeRoute)
   public func stopNavigation()
-  @objc deinit
+  public func getCurrentLocation(completion: @escaping (CoreLocation.CLLocation?, NVNavigationKit.LocationError?) -> Swift.Void)
 }
 @objc public protocol NVCompassServiceDelegate {
   @objc(compassService:didCompassUpdateWithDirection:didCompassTrigger:) optional func compassService(_ service: NVNavigationKit.NVCompassService, didCompassUpdateWith direction: CoreLocation.CLLocationDirection, didCompassTrigger: Swift.Bool)
@@ -216,9 +216,9 @@ public enum SideStreet : Swift.String {
   weak public var delegate: (any NVNavigationKit.NVCompassServiceDelegate)?
   public var isCompassRunning: Swift.Bool
   public init(delegate: (any NVNavigationKit.NVCompassServiceDelegate)? = nil)
+  @objc deinit
   public func startCompass(direction: CoreLocation.CLLocationDirection? = nil, retrieveDirectionNavigation: Swift.Bool = false)
   public func stopCompass()
-  @objc deinit
 }
 public enum RouteError {
   case noConnection, noRoute, invalidToken, unknow
