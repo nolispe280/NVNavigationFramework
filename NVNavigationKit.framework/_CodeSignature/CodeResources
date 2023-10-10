@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		wwI41E3iMWqGj40FJCBR5vkKFnU=
+		siQryG8NrXjfCWTii3wTvQBzu84=
 		</data>
 		<key>Base.lproj/Localizable.strings</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Modules/NVNavigationKit.swiftmodule/arm64-apple-ios.abi.json</key>
 		<data>
-		NU+UCFeYFYhdjNjy3QSVDxXv5K8=
+		hyvbSHzra37Lm19qCPciazkv+ps=
 		</data>
 		<key>Modules/NVNavigationKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
 		<data>
@@ -1057,7 +1057,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tqPGFI4i/8Hoj5gzaE4Kk7r7+lbYG0mcMcGCFVQtxXM=
+			wxGSov46GVY+G7N0HktAtImev6jkKRd0wbwWGL8Sv4c=
 			</data>
 		</dict>
 		<key>Base.lproj/Localizable.strings</key>
@@ -1120,7 +1120,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			p8Y2Qxnwwmx0O80Qk4BKx8rI5USdP7mpe1C5KgTUKTU=
+			ETeulSbWGHaRFvq1YFkrqSYq8hSTrOQLJ4HC9amzfl4=
 			</data>
 		</dict>
 		<key>Modules/NVNavigationKit.swiftmodule/arm64-apple-ios.private.swiftinterface</key>
