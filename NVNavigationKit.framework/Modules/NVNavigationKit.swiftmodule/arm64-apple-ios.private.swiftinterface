@@ -284,7 +284,7 @@ extension NVNavigationKit.RouteError : Foundation.LocalizedError {
   public var driving_side: Swift.String
   public var duration: Swift.Double
   public var name: Swift.String
-  public init(weight: Swift.Double, intersections: [NVNavigationKit.NVibeIntersection], distance: Swift.Double, geometry: Swift.String, maneuver: NVNavigationKit.NVibeManeuver, duration: Swift.Double, name: Swift.String)
+  public init(weight: Swift.Double, intersections: [NVNavigationKit.NVibeIntersection], distance: Swift.Double, geometry: Swift.String, maneuver: NVNavigationKit.NVibeManeuver, driving_side: Swift.String, duration: Swift.Double, name: Swift.String)
   public func getTurnHourDirection() -> Swift.Int
   @objc deinit
   open func encode(to encoder: any Swift.Encoder) throws
